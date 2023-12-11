@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,9 +46,7 @@ Route::get('/editmountain', function () {
     return view('editmountain');
 });
 
-Route::get('/account', function () {
-    return view('account');
-});
+Route::get('/account', [ProfileController::class, 'index']);
 
 Route::get('/create', function () {
     return view('create');

@@ -9,21 +9,17 @@
             <div>
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (23).jpg" class="mr-4 h-36 mb-6 rounded-full"
                     alt="avatar" loading="lazy" />
-                <p class="font-bold text-xl text-black">Username</p>
-                <p class="text-md text-black font-bold mt-2"> Full Name</p>
-                <p class="text-sm mt-2"> Bio Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda a odio quae
-                    magnam
-                    fuga
-                    nemo cumque consequatur ipsum dolor et pariatur aut perferendis sint vitae, quibusdam libero eaque
-                    necessitatibus porro? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam veniam odit
-                    assumenda, atque soluta ea laborum nostrum minus consectetur eligendi nulla! Nam tenetur ut facere ullam
-                    odit debitis voluptatum quod.</p>
+                @foreach ($profile as $data)
+                    <p class="font-bold text-xl text-black">{{ $data->username }}</p>
+                    <p class="text-md text-black font-bold mt-2"> {{ $data->fullname }}</p>
+                    <p class="text-sm mt-2"> {{ $data->bio }}</p>
+                @endforeach
                 <a href="/editprofile">
                     <button
                         class="mt-4 mb-2 md:mb-0 bg-slate-300 px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-black-600 rounded-full hover:shadow-lg hover:bg-slate-100">
                         Edit Profile </button>
                 </a>
-                <div class="h-px mt-4 bg-gray-200 border-0 dark:bg-gray-700"></div>
+                <div class="h-px mt-4 bg-gray-200 border-0 dark:bg-gray-700 w-screen"></div>
             </div>
         </div>
     </div>
