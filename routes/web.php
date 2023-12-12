@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+use Doctrine\DBAL\Driver\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +17,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
+
+
+Route::get('/', [HomeController::class, 'index'])->middleware('auth');
+
+// Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'authenticating']);
+
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
+
 
 Route::get('/mountain', function () {
     return view('mountain');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+// Route::get('/login', function () {
+//     return view('login');
+// });
 
 Route::get('/signup', function () {
     return view('register');
@@ -65,6 +79,12 @@ Route::get('/mountaininfo', function () {
     return view('infomount');
 });
 
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+
+Route::get('/account/{username}', [ProfileController::class, 'show']);
 
 // Route::get('/home', function () {
 //     return view('home', ['name' => 'USER']);

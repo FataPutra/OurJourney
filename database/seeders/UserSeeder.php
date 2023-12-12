@@ -1,0 +1,31 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\User;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
+
+class UserSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        // Schema::disableForeignKeyConstraints();
+        // User::truncate();
+        // Schema::enableForeignKeyConstraints();
+
+        // User::insert([
+        //     'username' => 'admin',
+        //     'email' => 'admin@email.com',
+        //     'password' => 'admin'
+        // ]);
+
+        User::factory()->count(10)->create();
+    }
+}

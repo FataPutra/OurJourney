@@ -1,6 +1,6 @@
 @extends('layouts.mainlayout')
 
-@section('title', 'Account')
+@section('title', $profile->username)
 
 @section('content')
 
@@ -9,11 +9,9 @@
             <div>
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (23).jpg" class="mr-4 h-36 mb-6 rounded-full"
                     alt="avatar" loading="lazy" />
-                @foreach ($profile as $data)
-                    <p class="font-bold text-xl text-black">{{ $data->username }}</p>
-                    <p class="text-md text-black font-bold mt-2"> {{ $data->fullname }}</p>
-                    <p class="text-sm mt-2"> {{ $data->bio }}</p>
-                @endforeach
+                <p class="font-bold text-xl text-black">{{ $profile->username }}</p>
+                <p class="text-md text-black font-bold mt-2"> {{ $profile->fullname }}</p>
+                <p class="text-sm mt-2"> {{ $profile->bio }}</p>
                 <a href="/editprofile">
                     <button
                         class="mt-4 mb-2 md:mb-0 bg-slate-300 px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-black-600 rounded-full hover:shadow-lg hover:bg-slate-100">

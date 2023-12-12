@@ -27,7 +27,7 @@
                     <div
                         class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
                     </div>
-                    <h4 class="mx-2 mt-2 font-bold text-xl text-slate-700 ">Username</h4>
+                    <h4 class="mx-2 mt-2 font-bold text-xl text-slate-700 "> {{ Auth::user()->username }}</h4>
                 </a>
             </div>
 
@@ -51,7 +51,7 @@
                         <span class="mx-2 font-medium">Create</span>
                     </a>
                     <a class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                        href="/login">
+                        href="/logout">
                         <img class="object-cover w-auto h-auto mx-2" src="{{ asset('/logout.png') }}" alt="">
                         <span class="mx-2 font-medium">Logout</span>
                     </a>
