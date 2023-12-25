@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Doctrine\DBAL\Driver\Middleware;
 
 /*
@@ -22,12 +23,12 @@ use Doctrine\DBAL\Driver\Middleware;
 // });
 
 
-Route::get('/', [HomeController::class, 'index'])->middleware('auth');
+// Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
-// Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
-Route::post('/login', [AuthController::class, 'authenticating']);
+Route::post('/login', [AuthController::class, 'authenticate']);
 
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
@@ -40,9 +41,12 @@ Route::get('/mountain', function () {
 //     return view('login');
 // });
 
-Route::get('/signup', function () {
-    return view('register');
-});
+// Route::get('/signup', function () {
+//     return view('register');
+// });
+
+Route::get('/signup', [UserController::class, 'create']);
+Route::post('/user', [UserController::class, 'store']);
 
 Route::get('/setup', function () {
     return view('setup');

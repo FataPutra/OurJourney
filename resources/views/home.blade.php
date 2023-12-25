@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Container for demo purpose -->
-    <div class="container mx-auto">
+    <div class="container mx-36 w-3/4">
         <!-- Section: Design Block -->
 
         <div class="mb-6 flex items-center">

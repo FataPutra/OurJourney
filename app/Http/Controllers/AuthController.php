@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Validator;
+
 
 class AuthController extends Controller
 {
@@ -13,11 +15,11 @@ class AuthController extends Controller
         return view('login');
     }
 
-    public function authenticating(Request $request)
+    public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'username' => ['required', 'username'],
-            'password' => ['required'],
+            'username' => ['required'],
+            'password' => ['required']
         ]);
 
         if (Auth::attempt($credentials)) {
@@ -26,8 +28,8 @@ class AuthController extends Controller
             return redirect()->intended('/');
         }
 
-        // Session::flash('status', 'failed'); //HARUS BUAT FLASH DULU LIAT TUTORIAL
-        // Session::flash('message', 'Login Failed');
+        Session::flash('statuss', 'failed');
+        Session::flash('message', 'Login Failed');
         return redirect('/login');
     }
 

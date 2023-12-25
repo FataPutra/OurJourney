@@ -27,7 +27,7 @@
                     <div
                         class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
                     </div>
-                    <h4 class="mx-2 mt-2 font-bold text-xl text-slate-700 "> {{ Auth::user()->username }}</h4>
+                    <h4 class="mx-2 mt-2 font-bold text-xl text-slate-700 "> admin</h4>
                 </a>
             </div>
 
