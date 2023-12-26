@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\Post;
 use Doctrine\DBAL\Driver\Middleware;
 
 /*
@@ -25,13 +27,21 @@ use Doctrine\DBAL\Driver\Middleware;
 
 // Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'authenticate']);
 
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
+Route::get('/signup', [UserController::class, 'create']);
+Route::post('/user', [UserController::class, 'store']);
+
+Route::get('/setup', [ProfileController::class, 'add']);
+Route::post('/profile', [ProfileController::class, 'store']);
+
+Route::get('/create', [PostController::class, 'index']);
+Route::post('/post', [PostController::class, 'store']);
 
 Route::get('/mountain', function () {
     return view('mountain');
@@ -45,13 +55,6 @@ Route::get('/mountain', function () {
 //     return view('register');
 // });
 
-Route::get('/signup', [UserController::class, 'create']);
-Route::post('/user', [UserController::class, 'store']);
-
-Route::get('/setup', function () {
-    return view('setup');
-});
-
 Route::get('/comment', function () {
     return view('comment');
 });
@@ -64,11 +67,11 @@ Route::get('/editmountain', function () {
     return view('editmountain');
 });
 
-Route::get('/account', [ProfileController::class, 'index']);
+Route::get('/account/{id}', [UserController::class, 'show']);
 
-Route::get('/create', function () {
-    return view('create');
-});
+// Route::get('/create', function () {
+//     return view('create');
+// });
 
 Route::get('/editpost', function () {
     return view('editpost');

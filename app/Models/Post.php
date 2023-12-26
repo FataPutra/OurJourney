@@ -5,18 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Post extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'user_id',
-        'fullname',
-        'bio',
-        'photos',
+        'caption',
+        'images',
     ];
-
-    public $timestamps = false;
 
     public function user()
     {

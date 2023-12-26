@@ -4,7 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-
 return new class extends Migration
 {
     /**
@@ -14,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('profiles', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->unique()->change();
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id('post_id');
+            $table->foreignId('user_id')->constrained('users');
+            $table->longtext('caption');
+            $table->text('images');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('profiles', function (Blueprint $table) {
-            $table->dropUnique('profiles_user_id_unique');
-        });
+        Schema::dropIfExists('posts');
     }
 };

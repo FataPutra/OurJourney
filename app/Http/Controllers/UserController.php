@@ -34,4 +34,11 @@ class UserController extends Controller
 
         return redirect('/login');
     }
+
+    public function show($id)
+    {
+        $user = User::with('profile', 'posts')->find($id);
+
+        return view('account', ['user' => $user]);
+    }
 }

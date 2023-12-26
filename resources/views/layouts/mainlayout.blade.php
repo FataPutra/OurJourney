@@ -20,14 +20,13 @@
 
             <div class="flex flex-col items-center mt-6 -mx-2 relative max-w-xs overflow-hidden bg-cover bg-no-repeat"
                 data-te-ripple-init data-te-ripple-color="light">
-                <a href="/account">
+                <a href="/account/{{ Auth::user()->id }}">
                     <img class="object-cover w-24 h-24 mx-2 rounded-full"
-                        src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                        alt="avatar">
+                        src="{{ asset('photos/' . Auth::user()->profile->photos) }}" alt="avatar">
                     <div
                         class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
                     </div>
-                    <h4 class="mx-2 mt-2 font-bold text-xl text-slate-700 "> admin</h4>
+                    <h4 class="mx-2 mt-2 font-bold text-xl text-slate-700 "> {{ Auth::user()->username }}</h4>
                 </a>
             </div>
 

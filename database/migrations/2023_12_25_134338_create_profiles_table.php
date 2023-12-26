@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('mountains', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->required()->after('id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
+        Schema::create('profiles', function (Blueprint $table) {
+            $table->id('profile_id');
+            $table->foreignId('user_id')->constrained('users');
+            $table->text('fullname');
+            $table->longText('bio');
+            $table->text('photos');
         });
     }
 
@@ -26,9 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('mountains', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-            $table->dropColumn(['user_id']);
-        });
+        Schema::dropIfExists('profiles');
     }
 };
